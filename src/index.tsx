@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { MovieList } from './components/MovieList'
 import reportWebVitals from './reportWebVitals';
+import { requests } from './lib/requests'
 
 ReactDOM.render(
   <React.StrictMode>
-    <MovieList></MovieList>
+    <MovieList title={'今週の動向'} featchUrl={requests.feachTrending}></MovieList>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import { Movie } from '../interface/index'
 import axios from '../lib/axios'
-import { requests } from '../lib/requests'
 
-export const MovieList = () => {
+type movieListProps = {
+  title: string,
+  featchUrl: string
+}
+
+export const MovieList = ( { title, featchUrl }: movieListProps ) => {
   const [movieList, setMovieList] = useState<Movie[]>([])
-  const fetchUrl = requests.feachTrending
+  const fetchUrl = featchUrl
   const baseUrl = 'https://image.tmdb.org/t/p/original'
 
   useEffect(() => {
@@ -17,11 +21,9 @@ export const MovieList = () => {
     fetchData()
   }, [fetchUrl])
 
-  console.log(movieList);
-
   return (
     <>
-      <h1>weekly trending movies</h1>
+      <h1>{title}</h1>
       {movieList.map( (movie, index) => (
           <div key={index}>
             <p>{movie.title}</p>
