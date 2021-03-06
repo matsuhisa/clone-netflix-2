@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Movie } from '../interface/index'
 import axios from '../lib/axios'
+import { SmallMovie } from './atoms/SmallMovie'
 
 type movieListProps = {
   title: string,
@@ -10,7 +11,6 @@ type movieListProps = {
 export const MovieList = ( { title, featchUrl }: movieListProps ) => {
   const [movieList, setMovieList] = useState<Movie[]>([])
   const fetchUrl = featchUrl
-  const baseUrl = 'https://image.tmdb.org/t/p/original'
 
   useEffect(() => {
     async function fetchData() {
@@ -24,13 +24,23 @@ export const MovieList = ( { title, featchUrl }: movieListProps ) => {
   return (
     <>
       <h1>{title}</h1>
-      {movieList.map( (movie, index) => (
-          <div key={index}>
-            <p>{movie.title}</p>
-            <p>{movie.original_name}</p>
-            <img key={index} src={`${baseUrl}${movie.poster_path}`} width={100} />
-          </div>
-      ))}
+      <ul>
+        {movieList.map( (movie) => (
+          <li key={movie.id}>
+            <SmallMovie movie={movie} />
+            {/* <div key={index}>
+              <p>{movie.name}</p>
+              <p>{movie.title}</p>
+              <p>{movie.overview}</p>
+              <p>{movie.vote_average}</p>
+              <p>日付：{movie.release_date}</p>
+              <p>日付：{movie.first_air_date}</p>
+              <img src={`${baseUrl}${movie.poster_path}`} width={100} />
+              <img src={`${baseUrl}${movie.backdrop_path}`} width={'100%'} />
+            </div> */}
+          </li>
+        ))}
+      </ul>
     </>
   )
 }

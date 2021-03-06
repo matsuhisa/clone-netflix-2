@@ -7,7 +7,9 @@ import { requests } from './lib/requests'
 
 ReactDOM.render(
   <React.StrictMode>
-    <MovieList title={'今週の動向'} featchUrl={requests.feachTrending}></MovieList>
+    <MovieList key="netflix" title={'netflix動向'} featchUrl={requests.feachNetflixOriginals} />
+    {/* <MovieList title={'今週の映画動向'} featchUrl={requests.feachDiscoverMovie}></MovieList> */}
+    {/* <MovieList title={'今週の動向'} featchUrl={requests.feachTrending}></MovieList> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
