@@ -2,14 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { MovieList } from './components/MovieList'
-import reportWebVitals from './reportWebVitals';
 import { requests } from './lib/requests'
+import { MovieFavoriteStates } from './components/atoms/MovieFavoriteStates/MovieFavoriteStates'
+import reportWebVitals from './reportWebVitals';
+import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MovieList key="netflix" title={'netflix動向'} featchUrl={requests.feachNetflixOriginals} />
-    {/* <MovieList title={'今週の映画動向'} featchUrl={requests.feachDiscoverMovie}></MovieList> */}
-    {/* <MovieList title={'今週の動向'} featchUrl={requests.feachTrending}></MovieList> */}
+    <RecoilRoot>
+      <MovieFavoriteStates />
+      <MovieList key="netflix" title={'netflix動向'} featchUrl={requests.feachNetflixOriginals} />
+      {/* <MovieList title={'今週の映画動向'} featchUrl={requests.feachDiscoverMovie}></MovieList> */}
+      {/* <MovieList title={'今週の動向'} featchUrl={requests.feachTrending}></MovieList> */}
+      <MovieFavoriteStates />
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );
