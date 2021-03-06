@@ -1,0 +1,11 @@
+.favorite {
+  padding: 10px;
+  display: block;
+
+  &[aria-checked="true"] {
+    background-color: pink;
+  }
+  &[aria-checked="false"] {
+    background-color: whitesmoke;
+  }
+}
