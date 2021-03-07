@@ -17,7 +17,7 @@ export const ModalDialogMovie = ( { show, movie, toggle }: modalDialogMovieProps
   return (
     <>
       {show && (
-        <div role="dialog" aria-hddien={!show} className="modal-dialog" onClick={close}>
+        <div role="dialog" aria-hidden={!show} className="modal-dialog" onClick={close}>
           <img src={`${baseUrl}${movie.poster_path}`} width={100} />
           <MovieFavorite movie={movie} />
         </div>
