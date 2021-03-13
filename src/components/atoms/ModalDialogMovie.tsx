@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Movie } from "../../interface"
 import { MovieFavorite } from './MovieFavorite/MovieFavorite'
 
@@ -18,7 +19,11 @@ export const ModalDialogMovie = ( { show, movie, toggle }: modalDialogMovieProps
     <>
       {show && (
         <div role="dialog" aria-hidden={!show} className="modal-dialog" onClick={close}>
-          <img src={`${baseUrl}${movie.poster_path}`} width={100} />
+          <Link to={`/movies/${movie.id}`}>
+            <img src={`${baseUrl}${movie.poster_path}`} width={100} />
+            <br />
+            {movie.name}
+          </Link>
           <MovieFavorite movie={movie} />
         </div>
       )}

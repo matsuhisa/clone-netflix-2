@@ -6,6 +6,6 @@
     background-color: pink;
   }
   &[aria-checked="false"] {
-    background-color: whitesmoke;
+    background-color: rgba(#000000, .5);
   }
 }

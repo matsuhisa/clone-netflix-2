@@ -1,23 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { MovieList } from './components/MovieList'
-import { requests } from './lib/requests'
-import { MovieFavoriteStates } from './components/atoms/MovieFavoriteStates/MovieFavoriteStates'
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
+import { BrowserRouter } from 'react-router-dom';
+import { App } from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <div style={{ position: "fixed", top: "0", width: "100%", backgroundColor: "#ffffff", borderBottom: "1px solid #eeeeee", padding: "5px" }}>
-        <MovieFavoriteStates />
-      </div>
-      <MovieList key="netflix" title={'netflix動向'} featchUrl={requests.feachNetflixOriginals} />
-      {/* <MovieList title={'今週の映画動向'} featchUrl={requests.feachDiscoverMovie}></MovieList> */}
-      {/* <MovieList title={'今週の動向'} featchUrl={requests.feachTrending}></MovieList> */}
-      <MovieFavoriteStates />
-    </RecoilRoot>
+    <BrowserRouter>
+      <RecoilRoot>
+        <App></App>
+      </RecoilRoot>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
